@@ -7,15 +7,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
   function createScrollTrigger(triggerElement, timeline) {
     ScrollTrigger.create({
       trigger: triggerElement,
-      start: "top bottom",
-      onLeaveBack: () => {
-        timeline.progress(0);
-        timeline.pause();
-      }
-    });
-
-    ScrollTrigger.create({
-      trigger: triggerElement,
       start: "top 60%",
       onEnter: () => timeline.play()
     });
@@ -48,13 +39,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   $("[anim-5]").each(function (index) {
     let tl = gsap.timeline({ paused: true, delay: 1 });
-    tl.from($(this), {opacity: 0, xPercent: 50, duration: 1.5, ease: Elastic.easeOut.config(2, 0.6) });
+    tl.from($(this), {opacity: 0, x: 1, duration: 1.5, ease: Elastic.easeOut.config(2, 0.6) });
     createScrollTrigger($(this), tl);
   })
 
   $("[anim-6]").each(function (index) {
     let tl = gsap.timeline({ paused: true });
-    tl.from($(this).find(".char"), {opacity: 0, x: 1, duration: 0.1, ease: "power0.out", stagger: {amount: 10} });
+    tl.from($(this).find(".char"), {opacity: 0, x: 1, duration: 0.1, ease: "power0.out", stagger: {amount: 1} });
     createScrollTrigger($(this), tl);
   })
 
